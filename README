@@ -11,7 +11,7 @@ http://pl.wikipedia.org/wiki/International_Bank_Account_Number
 Installation
 ============
 
-script/plugin install git://github.com/macuk/pesel.git
+script/plugin install git://github.com/macuk/pl_iban_generator.git
 
 Example
 =======
