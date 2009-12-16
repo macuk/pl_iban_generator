@@ -28,6 +28,16 @@ class PLIbanGeneratorTest < ActiveSupport::TestCase
     assert_equal 'PL47 1140 2004 0000 3002 3471 3036', g.to_s
   end
 
+  test "setting prefix" do
+    g = PlIbanGenerator.new('1140 2004', '0000 3002 3471 3036')
+    g.prefix = ''
+    assert_equal '47 1140 2004 0000 3002 3471 3036', g.to_s
+    g.prefix = nil
+    assert_equal '47 1140 2004 0000 3002 3471 3036', g.to_s
+    g = PlIbanGenerator.new('1140 2004', '0000 3002 3471 3036', nil)
+    assert_equal '47 1140 2004 0000 3002 3471 3036', g.to_s
+  end
+
   test "check number size exception" do
     assert_raise PlIbanGenerator::NumberInvalid do
       g = PlIbanGenerator.new(nil, nil)

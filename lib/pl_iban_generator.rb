@@ -22,7 +22,7 @@ class PlIbanGenerator
   end
 
   def get
-    @prefix + check_digits + @bank_code + @account_no
+    @prefix.to_s + check_digits + @bank_code + @account_no
   end
 
   def to_s
