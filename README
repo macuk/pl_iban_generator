@@ -1,13 +1,49 @@
 PLIbanGenerator
 ===============
 
-Introduction goes here.
+This plugin provides Polish IBAN numbers generator. 
+It generates full Polish IBAN number with check digits 
+based on only bank code and account number.
 
+Information about Polish IBAN number (in Polish language):
+http://pl.wikipedia.org/wiki/International_Bank_Account_Number
+
+Installation
+============
+
+script/plugin install git://github.com/macuk/pesel.git
 
 Example
 =======
 
-Example goes here.
+Typical usage: 
+
+  iban = PlIbanGenerator.new('1140 2004', '0000 3002 3471 3036')
+
+  iban.get      # 'PL47114020040000300234713036'
+  iban.to_s     # 'PL47 1140 2004 0000 3002 3471 3036'
+
+You can change parameters:
+
+  iban.bank_code  = 24900005           # number
+  iban.account_no = '0000111122223333' # string without spaces
+
+  iban.get      # 'PL72249000050000111122223333'
+  iban.to_s     # 'PL72 2490 0005 0000 1111 2222 3333'
+
+If you don't want 'PL' prefix:
+
+  iban = PlIbanGenerator.new(11402004, '0000300234713036', '')
+
+  iban.get      # '47114020040000300234713036'
+  iban.to_s     # '47 1140 2004 0000 3002 3471 3036'
+
+  iban = PlIbanGenerator.new(11402004, '0000300234713036')
+  iban.prefix = ''
+
+  iban.get      # '47114020040000300234713036'
+  iban.to_s     # '47 1140 2004 0000 3002 3471 3036'
 
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+
+Copyright (c) 2009 Piotr Macuk, released under the MIT license
