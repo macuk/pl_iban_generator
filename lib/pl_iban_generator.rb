@@ -26,9 +26,8 @@ class PlIbanGenerator
   end
 
   def to_s
-    n = get
-    return n.gsub(/(.{4})/, '\1 ').strip if n.size == 28
-    return n[0..1] + ' ' + n[2..-1].gsub(/(.{4})/, '\1 ').strip if n.size == 26
+    number = get
+    PlIbanFormatter.new(number).get
   end
 
   private
